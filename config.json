@@ -1,0 +1,41 @@
+{
+	"name": "ddpg",
+	"agent": "ddpg",
+	"num_episodes": 300,
+	"agents": {
+		"ppo": {
+			"network": "gaussian",
+			"lr": 1e-4,
+			"discount_factor": 0.99,
+			"clip_epsilon": 0.1,
+			"sgd_epochs": 20
+		},
+		"a2c":{
+			"actor_network": "gaussian",
+			"critic_network": "dqn",
+			"actor_lr": 1e-4,
+			"critic_lr": 5e-4,
+			"buffer_size": 1e5,
+			"batch_size": 128,
+			"update_net_steps": 8,
+			"repeated_update": 1,
+			"discount_factor": 0.99,
+			"clip_epsilon": 0.1,
+			"target_ema": 1e-3,
+			"n_step_bootstrapping": 5
+		},
+		"ddpg":{
+			"actor_network": "ddpg_actor",
+			"critic_network": "ddpg_critic",
+			"actor_lr": 1e-4,
+			"critic_lr": 5e-4,
+			"buffer_size": 1e5,
+			"batch_size": 128,
+			"update_net_steps": 1,
+			"repeated_update": 1,
+			"discount_factor": 0.99,
+			"target_ema": 1e-3,
+			"n_step_bootstrapping": 5
+		}
+	}
+}
